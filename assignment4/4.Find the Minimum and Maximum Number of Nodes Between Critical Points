@@ -1,11 +1,7 @@
-package com.algorithm;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class FindtheMinimumandMaximumNumberofNodesBetweenCriticalPoints {
+class Solution {
     public int[] nodesBetweenCriticalPoints(ListNode head) {
-
         ListNode cur = head;
         List<Integer> list = new ArrayList<>();
         int index = 0;
@@ -40,6 +36,5 @@ public class FindtheMinimumandMaximumNumberofNodesBetweenCriticalPoints {
         res[0] = distanceMin;
         res[1] = distanceMax;
         return res;
-
     }
 }
