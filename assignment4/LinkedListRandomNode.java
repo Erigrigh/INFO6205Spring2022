@@ -1,26 +1,15 @@
-package com.algorithm;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-public class LinkedListRandomNode {
+class Solution {
 
     List<Integer> list = new ArrayList<>();
     Random random = new Random();
-
-    // the class name on leetcode is Solution,
-    // so I change the name of the constructor and the class into Solution, when I test my code on leecode
-    // please only copy the code content of the constructor below to avoid problem, when test my code on leecode
-    // thank you
-
-    public LinkedListRandomNode(ListNode head) {
+    
+    public Solution(ListNode head) {
         while (head != null) {
             list.add(head.val);
             head = head.next;
         }
     }
-
+    
     public int getRandom() {
         int i = random.nextInt(list.size());
         int res = 0;
