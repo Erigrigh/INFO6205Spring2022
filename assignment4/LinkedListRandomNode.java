@@ -10,9 +10,8 @@ public class LinkedListRandomNode {
     Random random = new Random();
 
     // the class name on leetcode is Solution,
-    // so I have to change the name of the constructor into Solution
-    // please only copy the code content of the constructor below to avoid problem
-    // when test my code on leecode
+    // so I change the name of the constructor and the class into Solution, when I test my code on leecode
+    // please only copy the code content of the constructor below to avoid problem, when test my code on leecode
     // thank you
 
     public LinkedListRandomNode(ListNode head) {
