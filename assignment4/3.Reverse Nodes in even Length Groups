@@ -1,11 +1,5 @@
-package com.algorithm;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class ReverseNodesinEvenLengthGroups {
+class Solution {
     public ListNode reverseEvenLengthGroups(ListNode head) {
-
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode cur = dummy;
@@ -45,5 +39,4 @@ public class ReverseNodesinEvenLengthGroups {
         return dummy.next;
 
     }
-
 }
