@@ -1,9 +1,4 @@
-package com.algorithm;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class SplitLinkedListinParts {
+class Solution {
     public ListNode[] splitListToParts(ListNode head, int k) {
 
         ListNode[] res = new ListNode[k];
@@ -56,5 +51,7 @@ public class SplitLinkedListinParts {
         }
 
         return res;
+
+        
     }
 }
