@@ -1,0 +1,26 @@
+package com.algorithm;
+
+import java.util.PriorityQueue;
+
+public class SortList {
+    public ListNode sortList(ListNode head) {
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode cur = head;
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        while(cur != null) {
+            pq.offer(cur.val);
+            cur = cur.next;
+        }
+
+        while (!pq.isEmpty()) {
+            head.val = pq.poll();
+            head = head.next;
+        }
+
+        return dummy.next;
+    }
+}

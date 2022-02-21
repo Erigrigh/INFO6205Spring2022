@@ -1,0 +1,27 @@
+package com.algorithm;
+
+public class MergeInBetweenLinkedLists {
+    public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = list1;
+        ListNode fast = list1;
+        ListNode slow = list1;
+        while (a > 1) {
+            slow = slow.next;
+            a--;
+        }
+        while (b > 0) {
+            fast = fast.next;
+            b--;
+        }
+        slow.next = list2;
+        while(list2.next != null) {
+            list2 = list2.next;
+        }
+        list2.next = fast.next;
+        fast.next = null;
+
+        return dummy.next;
+    }
+}

@@ -1,0 +1,60 @@
+package com.algorithm;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SplitLinkedListinParts {
+    public ListNode[] splitListToParts(ListNode head, int k) {
+
+        ListNode[] res = new ListNode[k];
+
+        int size = 0;
+        ListNode cur = head;
+
+        while (cur != null) {
+            size++;
+            cur = cur.next;
+        }
+
+        if(k >= size) {
+            int i = 0;
+            while (head != null) {
+                res[i] = new ListNode(head.val);
+                head = head.next;
+                i++;
+            }
+            return res;
+        }
+
+        int partLen = size / k;
+        int addition = size % k;
+        ListNode newStart;
+        newStart = head;
+
+        for (int i = 0; i < k; i++ ) {
+            head = newStart;
+
+            if(addition > 0) {
+                for (int j = 0; j < partLen; j++) {
+                    head = head.next;
+                }
+                ListNode next = head.next;
+                head.next = null;
+                res[i] = newStart;
+                newStart = next;
+                addition--;
+            }
+            else {
+                for (int l = 0; l < partLen - 1; l++) {
+                    head = head.next;
+                }
+                ListNode next = head.next;
+                head.next = null;
+                res[i] = newStart;
+                newStart = next;
+            }
+        }
+
+        return res;
+    }
+}
