@@ -1,11 +1,6 @@
-package com.algorithm;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public class LinkedListComponents {
+class Solution {
     public int numComponents(ListNode head, int[] nums) {
-
+        
         Set<Integer> set = new HashSet<>();
         for (int i : nums) {
             set.add(i);
