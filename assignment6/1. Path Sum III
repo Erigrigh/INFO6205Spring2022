@@ -1,0 +1,44 @@
+class Solution {
+    int res;
+    int targetSum;
+    
+    public int pathSum(TreeNode root, int targetSum) {
+        if( root == null) return 0;
+        this.targetSum = targetSum;
+        
+        dfs1(root);
+        
+        return res;
+    }
+
+    
+    public void dfs1(TreeNode root) {
+        
+        if( root == null) return;
+        
+        dfs2(root, 0);
+        
+        dfs1(root.left);
+
+        dfs1(root.right);
+
+    }
+    
+    
+    
+    public void dfs2(TreeNode root, int pathSum) {
+        
+        if( root == null) return;
+        
+        pathSum = pathSum + root.val;
+
+        if(pathSum == targetSum) {
+            res = res + 1;
+        }
+        
+        dfs2(root.left, pathSum);
+
+        dfs2(root.right, pathSum);
+
+    }
+}
