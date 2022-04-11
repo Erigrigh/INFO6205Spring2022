@@ -1,0 +1,53 @@
+class Solution {
+    int res = 0;
+    Map<Integer,List<int[]>> graph;
+    int size;
+    int[] v;
+    int[] val;
+    
+    public int maximalPathQuality(int[] values, int[][] edges, int maxTime) {
+
+        size = values.length;
+        graph = new HashMap<>();
+        v = new int[size];
+        v[0] = 1;
+        val = values;
+        
+        for(int i = 0 ; i < size ; i++){
+            graph.put(i , new ArrayList<>());
+        }
+        
+        for(int[] e : edges){
+            int start = e[0] , end = e[1] , v = e[2];
+            graph.get(start).add(new int[]{end , v});
+            graph.get(end).add(new int[]{start , v});
+        }
+        
+        dfs(0 , maxTime , values[0]);
+        
+        return res;
+    }
+    
+    public void dfs(int cur , int rem , int sum){
+        
+        if(cur == 0){
+            res = Math.max(res , sum);
+        }
+        
+        for(int[] t : graph.get(cur)){
+            if(t[1] > rem) continue;
+            
+            if(++v[t[0]] == 1){
+                
+                sum = sum + val[t[0]];
+            }
+            
+            dfs(t[0] , rem - t[1] , sum);
+            
+            if(--v[t[0]] == 0){
+                
+                sum = sum - val[t[0]];
+            }
+        }
+    }
+}
