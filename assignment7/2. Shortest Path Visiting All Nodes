@@ -1,1 +1,30 @@
+class Solution {
+    
+    private static final int INF = 0x3f3f3f3f;
+    public int shortestPathLength(int[][] graph) {
+        
+        LinkedList<int[]> queue = new LinkedList<>();
 
+        boolean[][] visited = new boolean[graph.length][1 << graph.length];
+        for (int i = 0; i < graph.length; i++) {
+           
+            queue.addLast(new int[]{1 << i, i, 0});
+            visited[i][1 << i] = true;
+        }
+        while (!queue.isEmpty()) {
+            int[] tuple = queue.pollFirst();
+            int status = tuple[0], u = tuple[1], dis = tuple[2];
+           
+            if (status == (1 << graph.length) - 1) return dis;
+            
+            for (int v : graph[u]) {
+
+                int nextStatus = status | 1 << v;
+                if (visited[v][nextStatus]) continue;
+                queue.addLast(new int[]{nextStatus, v, dis + 1});
+                visited[v][nextStatus] = true;
+            }
+        }
+        return -1;
+    }
+}
